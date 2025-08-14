@@ -1,0 +1,652 @@
+/* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(-45deg, #0e0e10, #1c1c1f, #0e0e10);
+  background-size: 400% 400%;
+  animation: backgroundAnimation 15s ease infinite;
+  color: #ffffff;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes backgroundAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Loader */
+#loader {
+  position: fixed;
+  background: #000;
+  z-index: 9999;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Sticky Navbar */
+header {
+  position: sticky;
+  top: 0;
+  background: #111;
+  z-index: 1000;
+  padding: 1rem 2rem;
+  border-bottom: 2px solid #ff004f;
+}
+
+header .college {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin-top: 1rem;
+  gap: 2rem;
+}
+
+nav a {
+  color: #ff004f;
+  transition: 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+  color: #00ffe7;
+}
+
+/* Hero Section with SVG Symbols */
+.hero {
+  text-align: center;
+  padding: 3rem 1rem;
+  position: relative;
+}
+
+.symbols span:not(.triangle) {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 3px solid #ff004f;
+}
+
+.symbols span {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 3px solid #ff004f;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.symbols span.triangle {
+  display: inline-block;   /* keep spacing consistent with other symbols */
+  width: 0;
+  height: 0;
+  border: none;            /* critical: cancel the box border */
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 40px solid #ff004f;
+}
+
+.square {
+  border-radius: 0;
+}
+
+/* Countdown */
+.countdown {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  color: #00ffe7;
+}
+
+/* Glitch effect */
+.glitch {
+  position: relative;
+  color: #ff004f;
+  font-size: 2.5rem;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  color: #00ffe7;
+  clip: rect(0, 0, 0, 0);
+}
+
+.glitch::before {
+  animation: glitchTop 2s infinite linear;
+}
+
+.glitch::after {
+  animation: glitchBottom 2s infinite linear;
+}
+
+@keyframes glitchTop {
+  0% { clip: rect(0, 9999px, 0, 0); }
+  10% { clip: rect(10px, 9999px, 30px, 0); transform: translate(-3px, -3px); }
+  20% { clip: rect(15px, 9999px, 25px, 0); transform: translate(3px, -2px); }
+  100% { clip: rect(0, 9999px, 0, 0); transform: translate(0, 0); }
+}
+
+@keyframes glitchBottom {
+  0% { clip: rect(0, 9999px, 0, 0); }
+  10% { clip: rect(60px, 9999px, 80px, 0); transform: translate(2px, 2px); }
+  20% { clip: rect(70px, 9999px, 90px, 0); transform: translate(-2px, 3px); }
+  100% { clip: rect(0, 9999px, 0, 0); transform: translate(0, 0); }
+}
+
+/* Glassmorphism */
+.event-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+  padding: 0 2rem;
+}
+
+.event.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.event.glass:hover {
+  transform: scale(1.05);
+}
+
+/* Timeline */
+.timeline {
+  padding: 2rem;
+  background: #101014;
+}
+
+.timeline ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.timeline li {
+  padding: 0.5rem 0;
+  border-left: 4px solid #ff004f;
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Register */
+.register {
+  padding: 3rem;
+  text-align: center;
+  background: #0f0f12;
+}
+
+.register-btn {
+  background: #ff004f;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 25px;
+  transition: 0.3s ease;
+}
+
+.register-btn:hover {
+  background: #d60045;
+}
+
+/* Footer */
+footer {
+  background: #000;
+  color: #999;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.socials img {
+  height: 30px;
+  margin: 0 0.5rem;
+  filter: grayscale(1) brightness(2);
+  transition: transform 0.3s;
+}
+
+.socials img:hover {
+  transform: scale(1.1);
+}
+.hero .college-name {
+  font-size: 2rem; /* Increase this as needed */
+  color: #39ff14; /* Bright neon green */
+  text-shadow:
+    0 0 5px #39ff14,
+    0 0 10px #39ff14,
+    0 0 20px #39ff14,
+    0 0 40px #0f0;
+}
+
+/* Sports Section */
+.sports-section {
+  padding: 3rem 2rem;
+  background: #101014;
+}
+
+.sports-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.sports-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sports-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #ff004f;
+}
+
+.sports-card .badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #ff004f;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.sports-card .event-title {
+  font-size: 1.5rem;
+  color: #ff004f;
+  margin-top: 2rem;
+}
+
+.sports-card .event-subtitle {
+  font-size: 1rem;
+  color: #00ffe7;
+  margin-bottom: 0.5rem;
+}
+
+.sports-card .event-description {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.event-details {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.event-details li {
+  font-size: 0.9rem;
+  color: #fff;
+  margin: 0.3rem 0;
+}
+
+.event-details i {
+  color: #ff004f;
+  margin-right: 8px;
+}
+
+.sports-btn {
+  display: inline-block;
+  text-decoration: none;
+  background: linear-gradient(90deg, #ff004f, #d60045);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+
+.sports-btn:hover {
+  background: linear-gradient(90deg, #d60045, #ff004f);
+}
+
+
+/* Timeline Section */
+.timeline-section {
+  padding: 3rem 2rem;
+  background: #101014;
+}
+
+.timeline-container {
+  position: relative;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.timeline-container::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background: #ff004f;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  padding: 1rem 2rem;
+  position: relative;
+  width: 50%;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: -10px;
+  background: #ff004f;
+  border: 3px solid #fff;
+  top: 20px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timeline-item.left {
+  left: 0;
+}
+
+.timeline-item.right {
+  left: 50%;
+}
+
+.timeline-item.right::before {
+  left: -10px;
+}
+
+.timeline-content {
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  position: relative;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.timeline-date {
+  font-size: 0.9rem;
+  color: #00ffe7;
+}
+
+.timeline-title {
+  font-size: 1.4rem;
+  color: #ff004f;
+  margin: 0.5rem 0;
+}
+
+.timeline-time {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-description {
+  font-size: 0.95rem;
+  color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .timeline-container::after {
+    left: 8px;
+  }
+
+  .timeline-item {
+    width: 100%;
+    padding-left: 2.5rem;
+    padding-right: 0;
+  }
+
+  .timeline-item.right {
+    left: 0%;
+  }
+
+  .timeline-item::before {
+    left: -2px;
+  }
+}
+
+
+/* Music Button */
+.music-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 0, 79, 0.8);
+  border: none;
+  padding: 10px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: white;
+  font-size: 1.2rem;
+  z-index: 2000;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.music-btn:hover {
+  background: rgba(255, 0, 79, 1);
+  transform: scale(1.1);
+}
+
+
+
+
+/* General Mobile Adjustments */
+@media screen and (max-width: 768px) {
+  header {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  header .college {
+    font-size: 0.8rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .hero {
+    padding: 2rem 1rem;
+  }
+
+  .glitch {
+    font-size: 1.8rem;
+  }
+
+  .countdown {
+    font-size: 1rem;
+  }
+
+  /* Sports & Events Cards */
+  .sports-list {
+    grid-template-columns: 1fr;
+  }
+
+  .sports-card {
+    padding: 1rem;
+  }
+
+  /* Timeline single column */
+  .timeline-container::after {
+    left: 8px;
+  }
+  .timeline-item {
+    width: 100%;
+    padding-left: 2.5rem;
+    padding-right: 0;
+  }
+  .timeline-item.right {
+    left: 0;
+  }
+  .timeline-item::before {
+    left: -2px;
+  }
+
+  /* Footer adjustments */
+  footer {
+    font-size: 0.85rem;
+    padding: 1rem;
+  }
+  .socials img {
+    height: 24px;
+  }
+}
+
+/* Extra small devices (phones under 480px) */
+@media screen and (max-width: 480px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  .glitch {
+    font-size: 1.5rem;
+  }
+
+  .sports-card .event-title {
+    font-size: 1.2rem;
+  }
+
+  .sports-btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .register-btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 1.2rem;
+  }
+}
+
+
+
+/* Credits Section (Vertical Scroll) */
+.credits-section {
+  background: #0f0f12;
+  padding: 2rem 1rem;
+  overflow: hidden;
+  text-align: center;
+}
+
+.credits-section h2 {
+  color: #ff004f;
+  margin-bottom: 1rem;
+}
+
+.credits-container {
+  height: 200px; /* visible area height */
+  overflow: hidden;
+  position: relative;
+}
+
+.credits-track {
+  display: flex;
+  flex-direction: column;
+  animation: creditsUp 15s linear infinite;
+}
+
+.credits-track p {
+  color: #00ffe7;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+@keyframes creditsUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+
+/* Instagram Logo Hover Glitch */
+.instagram-logo {
+  position: relative;
+  filter: grayscale(1) brightness(2);
+  transition: transform 0.3s ease, filter 0.3s ease;
+  height: 40px; /* slightly bigger base size */
+}
+
+/* Instagram Logo Hover Glitch (No Black & White) */
+.instagram-logo {
+  position: relative;
+  transition: transform 0.3s ease;
+  height: 40px; /* base size */
+}
+
+.instagram-logo:hover {
+  transform: scale(1.4); /* enlarge on hover */
+  animation: glitchAnim 0.5s steps(2, end) infinite;
+}
+
+@keyframes glitchAnim {
+  0% {
+    transform: translate(0) scale(1.4);
+  }
+  20% {
+    transform: translate(-3px, 3px) scale(1.4);
+    filter: hue-rotate(30deg);
+  }
+  40% {
+    transform: translate(-3px, -3px) scale(1.4);
+    filter: hue-rotate(60deg);
+  }
+  60% {
+    transform: translate(3px, 3px) scale(1.4);
+    filter: hue-rotate(90deg);
+  }
+  80% {
+    transform: translate(3px, -3px) scale(1.4);
+    filter: hue-rotate(120deg);
+  }
+  100% {
+    transform: translate(0) scale(1.4);
+    filter: none;
+  }
+}
